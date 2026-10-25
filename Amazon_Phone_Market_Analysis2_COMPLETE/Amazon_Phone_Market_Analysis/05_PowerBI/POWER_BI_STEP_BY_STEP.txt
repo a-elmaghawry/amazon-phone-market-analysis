@@ -1,0 +1,163 @@
+# POWER BI — خطوة بخطوة
+
+## 1) الملف الذي ستستورد منه
+استخدم:
+03_Cleaned_Data/cleaned_phone_data.csv
+
+في Power BI:
+Home > Get Data > Text/CSV > اختر الملف > Transform Data.
+
+## 2) راجع أنواع البيانات
+Decimal Number:
+product_price_num
+product_original_price_num
+product_minimum_offer_price_num
+product_star_rating
+unit_price_num
+discount_amount
+discount_percent
+
+Whole Number:
+product_num_ratings
+product_num_offers
+sales_volume_num
+
+True/False:
+is_best_seller
+is_amazon_choice
+is_prime
+climate_pledge_friendly
+has_variations
+has_discount
+has_coupon
+
+## 3) اسم الجدول
+بعد Close & Apply، غيّر اسم الجدول إلى:
+PhoneProducts
+
+## 4) Measures
+انسخ Measures التالية واحدة واحدة داخل Modeling > New measure:
+
+```DAX
+TOTAL PRODUCTS =
+DISTINCTCOUNT(PhoneProducts[asin])
+
+AVERAGE PRICE =
+AVERAGE(PhoneProducts[product_price_num])
+
+AVERAGE RATING =
+AVERAGE(PhoneProducts[product_star_rating])
+
+TOTAL RATINGS =
+SUM(PhoneProducts[product_num_ratings])
+
+AVERAGE OFFERS =
+AVERAGE(PhoneProducts[product_num_offers])
+
+PRIME PRODUCTS =
+CALCULATE([TOTAL PRODUCTS], PhoneProducts[is_prime] = TRUE())
+
+BEST SELLERS =
+CALCULATE([TOTAL PRODUCTS], PhoneProducts[is_best_seller] = TRUE())
+
+DISCOUNTED PRODUCTS =
+CALCULATE([TOTAL PRODUCTS], PhoneProducts[has_discount] = TRUE())
+
+DISCOUNT % =
+DIVIDE([DISCOUNTED PRODUCTS], [TOTAL PRODUCTS])
+
+```
+
+## 5) صفحة 1 — Executive Overview
+Canvas: 16:9.
+
+الخلفية: near-black.
+
+Header:
+AMAZON PHONE MARKET ANALYTICS
+Pricing • Customer Experience • Marketplace Performance
+
+KPI cards:
+Total Products
+Average Price
+Average Rating
+Total Ratings
+Prime Products
+Best Sellers
+
+Visual 1:
+Clustered column chart
+Axis = price_band
+Values = [TOTAL PRODUCTS]
+Title = Product Distribution by Price
+
+Visual 2:
+Scatter
+X = product_price_num
+Y = product_star_rating
+Size = product_num_ratings
+Details = asin
+Legend = is_prime
+Title = Customer Rating vs Product Price
+
+Visual 3:
+Bar chart
+Axis = is_prime
+Values = [TOTAL PRODUCTS]
+Title = Prime Availability
+
+Visual 4:
+Bar chart
+Axis = is_best_seller
+Values = [TOTAL PRODUCTS]
+Title = Best Seller Representation
+
+Visual 5:
+Top 10 bar chart
+Axis = product_title
+Values = product_num_ratings
+Filter = Top N 10
+Title = Top 10 Products by Customer Ratings
+
+Slicers:
+price_band
+rating_band
+is_prime
+is_best_seller
+has_discount
+
+## 6) صفحة 2 — Product Analysis
+أضف Table:
+product_title
+product_price_num
+product_star_rating
+product_num_ratings
+product_num_offers
+is_prime
+is_best_seller
+discount_percent
+has_coupon
+
+أضف Conditional Formatting للتقييم والسعر.
+
+## 7) صفحة 3 — Insights
+ضع 4 مناطق:
+Pricing
+Customer Experience
+Marketplace
+Promotions
+
+لا تكتب Insight من غير رقم. استخرج الرقم من الـvisual/measure.
+
+## 8) التفاعل
+Format > Edit interactions.
+اختبر كل slicer: يجب أن تتغير الـKPIs والرسومات.
+
+## 9) الحفظ
+احفظ الملف باسم:
+05_PowerBI/Amazon_Phone_Market_Analysis.pbix
+
+## 10) قاعدة التصميم
+استخدم لون خلفية داكن + أبيض للنص + deep red للـhighlight + light blue للـsecondary.
+لا تستخدم ألوان كثيرة.
+لا تضع Visual بلا سؤال Business واضح.

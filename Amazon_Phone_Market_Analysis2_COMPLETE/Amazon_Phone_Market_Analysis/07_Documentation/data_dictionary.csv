@@ -1,0 +1,33 @@
+Column,Business Meaning
+asin,Unique product identifier in the source data.
+product_title,Product name/title.
+product_price,Current displayed price as text in the raw dataset.
+product_original_price,Original/list price when provided.
+currency,Currency code.
+product_star_rating,Average customer star rating.
+product_num_ratings,Number of customer ratings.
+product_num_offers,Number of offers.
+product_minimum_offer_price,Minimum offer price when provided.
+is_best_seller,Boolean indicator for Best Seller status.
+is_amazon_choice,Boolean indicator for Amazon's Choice status.
+is_prime,Boolean indicator for Prime status.
+product_availability,Availability text.
+climate_pledge_friendly,Boolean indicator for Climate Pledge Friendly.
+sales_volume,Marketplace sales/popularity text.
+delivery,Delivery information text.
+has_variations,Whether the product has variations.
+unit_price,Unit price when provided.
+unit_count,Unit count when provided.
+coupon_text,Coupon/promotion text when provided.
+product_price_num,Numeric version of current price created during cleaning.
+product_original_price_num,Numeric version of original price created during cleaning.
+product_minimum_offer_price_num,Numeric version of minimum offer price created during cleaning.
+unit_price_num,Numeric version of unit price created during cleaning.
+sales_volume_num,Numeric proxy parsed from displayed sales-volume text.
+discount_amount,Original price minus current price when both are available.
+discount_percent,Discount amount divided by original price.
+has_discount,True when a positive discount amount can be calculated.
+has_coupon,True when coupon text is present.
+price_band,Business-friendly price category.
+rating_band,Business-friendly rating category.
+product_key,Surrogate row key created after exact-duplicate removal.

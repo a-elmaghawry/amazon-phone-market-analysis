@@ -1,0 +1,21 @@
+Column,Data Type,Missing Count,Missing %,Unique Values
+asin,object,0,0.0,315
+product_title,object,0,0.0,315
+product_price,object,4,1.18,241
+product_original_price,object,192,56.47,108
+currency,object,4,1.18,1
+product_star_rating,float64,3,0.88,22
+product_num_ratings,int64,0,0.0,284
+product_num_offers,int64,0,0.0,38
+product_minimum_offer_price,object,4,1.18,273
+is_best_seller,bool,0,0.0,2
+is_amazon_choice,bool,0,0.0,2
+is_prime,bool,0,0.0,2
+product_availability,object,265,77.94,21
+climate_pledge_friendly,bool,0,0.0,2
+sales_volume,object,20,5.88,18
+delivery,object,3,0.88,92
+has_variations,bool,0,0.0,2
+unit_price,object,336,98.82,2
+unit_count,float64,336,98.82,2
+coupon_text,object,318,93.53,13
